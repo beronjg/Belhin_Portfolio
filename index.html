@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BELHIN J G | Automobile Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neonBlue: '#00f3ff',
+                        neonRed: '#ff003c',
+                        neonPurple: '#b026ff',
+                        darkBg: '#020205',
+                    },
+                    fontFamily: {
+                        display: ['Orbitron', 'sans-serif'],
+                        body: ['Rajdhani', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neon-blue': '0 0 15px rgba(0, 243, 255, 0.6), 0 0 30px rgba(0, 243, 255, 0.3)',
+                        'neon-red': '0 0 15px rgba(255, 0, 60, 0.6), 0 0 30px rgba(255, 0, 60, 0.3)',
+                    },
+                    backgroundImage: {
+                        // PLACEHOLDER HERO IMAGE: Replace this URL with your specific car image if needed. 
+                        // A dark, front-facing view works best.
+                        //'hero-car': "url('https://images.unsplash.com/photo-1610647752706-3bb12232b3ab?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #020205;
+            color: white;
+            /* Subtle circuit board pattern overlay */
+            background-image: radial-gradient(circle at 50% 50%, rgba(0, 243, 255, 0.05) 0%, transparent 60%),
+                              linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 50px 50px, 50px 50px;
+        }
+        
+        .glass-card {
+            background: rgba(10, 10, 15, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* Styles for the Integrated Hero Text */
+        .integrated-text {
+            /* This makes the text interact with the background image light */
+            mix-blend-mode: overlay;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+        .hero-overlay-gradient {
+             background: linear-gradient(to bottom, rgba(2,2,5,0.8) 0%, rgba(2,2,5,0.4) 50%, rgba(2,2,5,1) 100%);
+        }
+
+        .clip-path-slant {
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+        }
+
+        /* Gallery Hover Effects */
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-item:hover img { transform: scale(1.05); }
+
+        /* SPEEDOMETER ANIMATIONS */
+        @keyframes sweep {
+            0% { transform: rotate(-120deg); }
+            100% { transform: rotate(var(--target-deg)); }
+        }
+
+        .gauge-needle {
+            transform-origin: center;
+            transform: rotate(-120deg); /* Starting position */
+            animation: sweep 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; /* Smooth car-like acceleration */
+            animation-delay: 0.5s;
+        }
+
+        .gauge-tick {
+            stroke: rgba(255, 255, 255, 0.2);
+            stroke-width: 2;
+        }
+    </style>
+</head>
+<body class="font-body antialiased overflow-x-hidden text-gray-200">
+
+    <nav class="fixed w-full z-50 glass-card border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl md:text-2xl font-display font-bold text-white tracking-wider flex items-center">
+                <span class="text-neonRed mr-1">///</span> BELHIN<span class="text-neonBlue">.JG</span>
+            </div>
+            <div class="flex items-center space-x-8 text-sm md:text-lg font-medium tracking-wide">
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="hover:text-neonBlue transition-colors duration-300">Specs</a>
+                    <a href="#projects" class="hover:text-neonBlue transition-colors duration-300">Projects</a>
+                    <a href="#gallery" class="hover:text-neonBlue transition-colors duration-300">Gallery</a>
+                </div>
+                <a href="belhin-resume.pdf" download class="flex items-center gap-2 border border-neonBlue/50 px-3 py-1 md:px-4 md:py-2 rounded-sm text-neonBlue text-xs md:text-sm hover:bg-neonBlue hover:text-black hover:shadow-neon-blue transition-all duration-300 font-display">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                    CV ID
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="h-screen relative flex items-center justify-center overflow-hidden">
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+            <source src="videos/View_Video_Generation.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="absolute inset-0 bg-black/15 z-0"></div>
+        <!-- <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('images/frond\ black\ grade.png');"></div> -->
+        <div class="absolute inset-0 hero-overlay-gradient z-10"></div>
+        
+        <div class="absolute top-1/3 left-0 w-96 h-96 bg-neonBlue/20 rounded-full blur-[150px] z-20 mix-blend-screen"></div>
+        <div class="absolute bottom-1/3 right-0 w-96 h-96 bg-neonRed/20 rounded-full blur-[150px] z-20 mix-blend-screen"></div>
+
+        <div class="text-center relative z-30 px-4 mt-20">
+            <h2 class="text-neonBlue font-display tracking-[0.3em] text-sm md:text-base mb-2 uppercase animate-pulse border-b border-neonBlue/30 inline-block pb-1">
+                SYSTEMS READY // AUTOMOBILE ENGINEER
+            </h2>
+            
+            <h1 class="integrated-text text-7xl md:text-9xl font-display font-black leading-none mb-4 text-white opacity-90">
+                BELHIN J G
+            </h1>
+
+            <p class="text-gray-300 text-lg md:text-2xl max-w-2xl mx-auto mb-12 font-medium relative">
+                <span class="absolute -left-4 top-0 text-neonRed">/</span>
+                Bridging mechanical muscle with digital intelligence for future mobility platforms.
+                <span class="absolute -right-4 top-0 text-neonRed">/</span>
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="#projects" class="w-full md:w-auto px-8 py-4 bg-neonBlue text-black font-display font-bold text-lg hover:bg-white hover:shadow-neon-blue transition-all duration-300 clip-path-slant">
+                    INITIALIZE PROJECTS
+                </a>
+                <a href="#contact" class="px-8 py-4 border border-neonRed text-neonRed font-display font-bold text-lg hover:bg-neonRed hover:text-black hover:shadow-neon-red transition-all duration-300 clip-path-slant">
+                    CONTACT ME
+                </a>
+                <!-- <a href="belhin-resume.pdf" download class="w-full md:w-auto group relative px-8 py-4 border-2 border-neonBlue/50 text-neonBlue font-display font-bold text-lg hover:bg-neonBlue/10 hover:border-neonBlue hover:shadow-neon-blue hover:text-white transition-all duration-300 clip-path-slant flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 group-hover:animate-bounce"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M12 12v-8.25m0 8.25l-3-3m3 3l3-3" /></svg>
+                    <span>DOWNLOAD RESUME_FILE</span>
+                </a> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="py-20 relative z-30 -mt-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="glass-card p-6 border-b-2 border-neonBlue hover:bg-neonBlue/5 transition duration-300">
+                    <h3 class="text-gray-400 font-display text-xs uppercase tracking-widest mb-1">Focus Area</h3>
+                    <div class="text-2xl font-display font-bold text-white">EV Powertrains</div>
+                </div>
+                <div class="glass-card p-6 border-b-2 border-white hover:bg-white/5 transition duration-300">
+                    <h3 class="text-gray-400 font-display text-xs uppercase tracking-widest mb-1">Primary Tool</h3>
+                    <div class="text-2xl font-display font-bold text-white">CATIA V5 / ANSYS</div>
+                </div>
+                <div class="glass-card p-6 border-b-2 border-neonRed hover:bg-neonRed/5 transition duration-300">
+                    <h3 class="text-gray-400 font-display text-xs uppercase tracking-widest mb-1">Experience</h3>
+                    <div class="text-2xl font-display font-bold text-white">3+ YRS R&D</div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+
+
+    <section id="about" class="py-16 relative overflow-hidden -mt-20 z-30">
+        <div class="absolute left-0 top-1/2 w-32 h-1 bg-neonBlue/30"></div>
+        <div class="absolute right-0 top-1/2 w-32 h-1 bg-neonRed/30"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="glass-card p-8 md:p-12 border-t border-neonBlue/30 flex flex-col">
+                
+                <div class="mb-8 md:mb-12 py-1">
+                    <h2 class="text-3xl font-display font-bold text-white">
+                        <span class="text-neonBlue mr-2">></span> ENGINEER PROFILE
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-10 md:gap-16 items-start mb-12">
+                    
+                    <div class="w-40 h-40 relative flex-shrink-0 mx-auto md:mx-0">
+                         <div class="absolute inset-0 border-2 border-dashed border-neonBlue rounded-full animate-[spin_10s_linear_infinite] shadow-[0_0_15px_rgba(0,243,255,0.3)]"></div>
+                         <div class="absolute inset-2 border-2 border-neonRed rounded-full shadow-[0_0_15px_rgba(255,0,60,0.3)]"></div>
+                         <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                         </div>
+                         <div class="absolute bottom-0 right-0 bg-black px-2 py-1 border border-neonBlue text-[10px] text-neonBlue font-display font-bold shadow-neon-blue">ONLINE</div>
+                    </div>
+
+                    <div class="w-full">
+                        
+                        <p class="text-lg text-gray-300 leading-relaxed mb-10">
+                            I am an Automobile Engineer focused on bridging the gap between <span class="text-white font-bold">mechanical muscle</span> and <span class="text-white font-bold">digital intelligence</span>. My expertise lies in developing sustainable powertrain solutions, optimizing vehicle aerodynamics through CFD, and integrating advanced driver-assistance systems.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            
+                            <div class="bg-black/40 p-5 border-l-2 border-neonBlue hover:bg-white/5 transition duration-300 group">
+                                <h3 class="text-gray-500 font-display text-[10px] uppercase tracking-widest mb-1">Integration</h3>
+                                <div class="text-xl font-display font-bold text-white group-hover:text-neonBlue transition duration-300">Vehicle Design</div>
+                                <p class="text-sm text-neonBlue/80 mt-1">Chassis & Body Systems</p>
+                            </div>
+
+                            <div class="bg-black/40 p-5 border-l-2 border-neonRed hover:bg-white/5 transition duration-300 group">
+                                <h3 class="text-gray-500 font-display text-[10px] uppercase tracking-widest mb-1">Propulsion</h3>
+                                <div class="text-xl font-display font-bold text-white group-hover:text-neonRed transition duration-300">Powertrain & EV</div>
+                                <p class="text-sm text-sm text-neonRed/80 mt-1">Battery & Motor Design</p>
+                            </div>
+
+                            <div class="bg-black/40 p-5 border-l-2 border-white hover:bg-white/5 transition duration-300 group">
+                                <h3 class="text-gray-500 font-display text-[10px] uppercase tracking-widest mb-1">Optimization</h3>
+                                <div class="text-xl font-display font-bold text-white group-hover:text-white transition duration-300">Thermal Mgmt</div>
+                                <p class="text-sm text-gray-400 mt-1">Cooling & Aerodynamics</p>
+                            </div>
+
+                            <div class="bg-black/40 p-5 border-l-2 border-purple-500 hover:bg-white/5 transition duration-300 group">
+                                <h3 class="text-gray-500 font-display text-[10px] uppercase tracking-widest mb-1">Design Tools</h3>
+                                <div class="text-xl font-display font-bold text-white group-hover:text-purple-400 transition duration-300">CAD & Simulation</div>
+                                <p class="text-sm text-purple-400/80 mt-1">SolidWorks / ANSYS</p>
+                            </div>
+
+                            <div class="bg-black/40 p-5 border-l-2 border-green-400 hover:bg-white/5 transition duration-300 md:col-span-2 group flex flex-col md:flex-row md:items-center md:justify-between">
+                                <div>
+                                    <h3 class="text-gray-500 font-display text-[10px] uppercase tracking-widest mb-2">R&D Execution</h3>
+                                    <div class="text-xl font-display font-bold text-white group-hover:text-green-400 transition duration-300">Prototype Development & Testing</div>
+                                </div>
+                                <div class="mt-2 md:mt-0">
+                                    <span class="px-3 py-1 border border-green-500/30 text-green-400 text-xs font-bold rounded uppercase tracking-wider">Active Focus</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between pt-6 border-t border-white/10 gap-4 mt-auto">
+                    
+                    <span class="font-display text-neonRed tracking-widest text-sm drop-shadow-[0_0_5px_rgba(255,0,60,0.8)]">BELHIN J G // AUTHORIZED PERSONNEL</span>
+                    
+                    <div class="flex gap-4">
+                        <a href="#" class="p-2 bg-white/5 rounded hover:bg-neonBlue hover:text-black hover:shadow-neon-blue transition duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="#" class="p-2 bg-white/5 rounded hover:bg-neonRed hover:text-black hover:shadow-neon-red transition duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" ><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 21.227.792 22 1.771 22h20.451C23.2 22 24 21.227 24 20.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+<section class="py-20 relative overflow-hidden bg-black">
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-50"></div>
+        
+        <div class="max-w-[1300px] mx-auto px-16 relative z-10">
+            <h2 class="text-4xl font-display font-bold mb-16 text-center text-white">
+                <span class="text-neonRed">///</span> TECHNICAL TELEMETRY
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                
+                <div class="relative group">
+                    <div class="relative w-52 h-52 mx-auto mb-4">
+                        <div class="absolute inset-0 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 shadow-[0_0_20px_rgba(0,243,255,0.1)]"></div>
+                        
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="#333" stroke-width="12" stroke-dasharray="360" stroke-dashoffset="120" stroke-linecap="round" class="opacity-50"></circle>
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="#00f3ff" stroke-width="12" 
+                                    stroke-dasharray="534" stroke-dashoffset="200" 
+                                    stroke-linecap="round" class="drop-shadow-[0_0_10px_rgba(0,243,255,0.8)] opacity-90"></circle>
+                        </svg>
+
+                        <div class="absolute inset-0 flex items-center justify-center gauge-needle" style="--target-deg: 100deg;">
+                            <div class="w-1 h-20 bg-gradient-to-t from-transparent via-neonBlue to-white rounded-full origin-bottom relative -top-8 shadow-[0_0_15px_#00f3ff]"></div>
+                            <div class="absolute w-3 h-3 bg-gray-900 rounded-full border-2 border-neonBlue z-10"></div>
+                        </div>
+
+                        <div class="absolute bottom-8 inset-x-0 text-center">
+                            <span class="block text-3xl font-display font-bold text-white drop-shadow-[0_0_10px_rgba(0,243,255,0.8)]">95</span>
+                            <span class="text-[10px] text-neonBlue tracking-widest font-mono">RPM x100</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white group-hover:text-neonBlue transition">CAD & DESIGN</h3>
+                    <p class="text-gray-500 text-xs mt-1">SolidWorks / CATIA</p>
+                </div>
+
+                <div class="relative group">
+                    <div class="relative w-52 h-52 mx-auto mb-4">
+                         <div class="absolute inset-0 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 shadow-[0_0_20px_rgba(255,0,60,0.1)]"></div>
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="#333" stroke-width="12" stroke-dasharray="360" stroke-dashoffset="120" stroke-linecap="round" class="opacity-50"></circle>
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="#ff003c" stroke-width="12" 
+                                    stroke-dasharray="534" stroke-dashoffset="240" 
+                                    stroke-linecap="round" class="drop-shadow-[0_0_10px_rgba(255,0,60,0.8)] opacity-90"></circle>
+                        </svg>
+
+                        <div class="absolute inset-0 flex items-center justify-center gauge-needle" style="--target-deg: 60deg;">
+                            <div class="w-1 h-20 bg-gradient-to-t from-transparent via-neonRed to-white rounded-full origin-bottom relative -top-8 shadow-[0_0_15px_#ff003c]"></div>
+                            <div class="absolute w-3 h-3 bg-gray-900 rounded-full border-2 border-neonRed z-10"></div>
+                        </div>
+
+                        <div class="absolute bottom-8 inset-x-0 text-center">
+                            <span class="block text-3xl font-display font-bold text-white drop-shadow-[0_0_10px_rgba(255,0,60,0.8)]">88</span>
+                            <span class="text-[10px] text-neonRed tracking-widest font-mono">RPM x100</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white group-hover:text-neonRed transition">THERMAL</h3>
+                    <p class="text-gray-500 text-xs mt-1">ANSYS Fluent</p>
+                </div>
+
+                <div class="relative group">
+                    <div class="relative w-52 h-52 mx-auto mb-4">
+                         <div class="absolute inset-0 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 shadow-[0_0_20px_rgba(176,38,255,0.1)]"></div>
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="#333" stroke-width="12" stroke-dasharray="360" stroke-dashoffset="120" stroke-linecap="round" class="opacity-50"></circle>
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="#b026ff" stroke-width="12" 
+                                    stroke-dasharray="534" stroke-dashoffset="220" 
+                                    stroke-linecap="round" class="drop-shadow-[0_0_10px_rgba(176,38,255,0.8)] opacity-90"></circle>
+                        </svg>
+
+                        <div class="absolute inset-0 flex items-center justify-center gauge-needle" style="--target-deg: 80deg;">
+                            <div class="w-1 h-20 bg-gradient-to-t from-transparent via-neonPurple to-white rounded-full origin-bottom relative -top-8 shadow-[0_0_15px_#b026ff]"></div>
+                            <div class="absolute w-3 h-3 bg-gray-900 rounded-full border-2 border-neonPurple z-10"></div>
+                        </div>
+
+                        <div class="absolute bottom-8 inset-x-0 text-center">
+                            <span class="block text-3xl font-display font-bold text-white drop-shadow-[0_0_10px_rgba(176,38,255,0.8)]">92</span>
+                            <span class="text-[10px] text-neonPurple tracking-widest font-mono">RPM x100</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white group-hover:text-neonPurple transition">EV SYSTEMS</h3>
+                    <p class="text-gray-500 text-xs mt-1">BMS / Motor Control</p>
+                </div>
+
+                <div class="relative group">
+                    <div class="relative w-52 h-52 mx-auto mb-4">
+                         <div class="absolute inset-0 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 shadow-[0_0_20px_rgba(57,255,20,0.1)]"></div>
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="#333" stroke-width="12" stroke-dasharray="360" stroke-dashoffset="120" stroke-linecap="round" class="opacity-50"></circle>
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="#39ff14" stroke-width="12" 
+                                    stroke-dasharray="534" stroke-dashoffset="260" 
+                                    stroke-linecap="round" class="drop-shadow-[0_0_10px_rgba(57,255,20,0.8)] opacity-90"></circle>
+                        </svg>
+
+                        <div class="absolute inset-0 flex items-center justify-center gauge-needle" style="--target-deg: 40deg;">
+                            <div class="w-1 h-20 bg-gradient-to-t from-transparent via-[#39ff14] to-white rounded-full origin-bottom relative -top-8 shadow-[0_0_15px_#39ff14]"></div>
+                            <div class="absolute w-3 h-3 bg-gray-900 rounded-full border-2 border-[#39ff14] z-10"></div>
+                        </div>
+
+                        <div class="absolute bottom-8 inset-x-0 text-center">
+                            <span class="block text-3xl font-display font-bold text-white drop-shadow-[0_0_10px_rgba(57,255,20,0.8)]">82</span>
+                            <span class="text-[10px] text-[#39ff14] tracking-widest font-mono">RPM x100</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white group-hover:text-[#39ff14] transition">PROTOTYPING</h3>
+                    <p class="text-gray-500 text-xs mt-1">3D Printing / CNC</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+
+
+    <section id="projects" class="py-20 relative">
+        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-neonBlue/50 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-display font-bold mb-16 flex items-center">
+                <span class="w-12 h-1 bg-neonRed mr-4 shadow-neon-red"></span>
+                KEY PROTOTYPES
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="group relative">
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-neonBlue to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-80 transition duration-500"></div>
+                    <div class="relative glass-card p-6 rounded-lg h-full hover:-translate-y-2 transition-all duration-500">
+                        <div class="h-64 bg-gray-900 rounded-md mb-6 overflow-hidden relative border border-white/10">
+                            <img src="https://images.unsplash.com/photo-1597007030739-6d7314dd270c?q=80&w=1000&auto=format&fit=crop" alt="EV Battery Project" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent"></div>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-2 group-hover:text-neonBlue transition">EV Thermal Management System</h3>
+                        <p class="text-gray-400 mb-4">Designed a liquid-cooling circuit for a 400V battery pack, improving heat dissipation by 18% under load.</p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="px-2 py-1 border border-neonBlue/30 text-neonBlue text-[10px] tracking-wider font-bold rounded-sm uppercase">Solidworks</span>
+                            <span class="px-2 py-1 border border-neonBlue/30 text-neonBlue text-[10px] tracking-wider font-bold rounded-sm uppercase">ANSYS Fluent</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group relative">
+                     <div class="absolute -inset-0.5 bg-gradient-to-r from-neonRed to-orange-600 rounded-lg blur opacity-30 group-hover:opacity-80 transition duration-500"></div>
+                    <div class="relative glass-card p-6 rounded-lg h-full hover:-translate-y-2 transition-all duration-500">
+                         <div class="h-64 bg-gray-900 rounded-md mb-6 overflow-hidden relative border border-white/10">
+                             <img src="https://images.unsplash.com/photo-1559628239-7dd1c12af9da?q=80&w=1000&auto=format&fit=crop" alt="Chassis Project" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent"></div>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-2 group-hover:text-neonRed transition">Formula Student Chassis</h3>
+                        <p class="text-gray-400 mb-4">Tubular spaceframe design optimizing torsional stiffness while meeting strict weight targets for competition.</p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="px-2 py-1 border border-neonRed/30 text-neonRed text-[10px] tracking-wider font-bold rounded-sm uppercase">CATIA V5</span>
+                            <span class="px-2 py-1 border border-neonRed/30 text-neonRed text-[10px] tracking-wider font-bold rounded-sm uppercase">FEA Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-20 relative bg-black/40">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-display font-bold mb-12 flex items-center justify-end">
+                VISUAL DATABASE // GALLERY
+                <span class="w-12 h-1 bg-neonBlue ml-4 shadow-neon-blue"></span>
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
+                <div class="gallery-item relative group rounded-lg overflow-hidden border border-white/10 md:row-span-2 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=800&auto=format&fit=crop" alt="Car detail" class="w-full h-full object-cover transition-transform duration-700">
+                    <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-neonBlue/80 to-darkBg/40 opacity-0 transition-opacity duration-300 flex items-end p-4">
+                        <span class="font-display font-bold text-white">ENGINE BAY DETAIL</span>
+                    </div>
+                </div>
+                <div class="gallery-item relative group rounded-lg overflow-hidden border border-white/10 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=800&auto=format&fit=crop" alt="Car detail" class="w-full h-full object-cover transition-transform duration-700">
+                     <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-neonRed/80 to-darkBg/40 opacity-0 transition-opacity duration-300 flex items-end p-4">
+                        <span class="font-display font-bold text-white">AERODYNAMICS TEST</span>
+                    </div>
+                </div>
+                 <div class="gallery-item relative group rounded-lg overflow-hidden border border-white/10 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1503376763036-06437989318d?q=80&w=800&auto=format&fit=crop" alt="Car detail" class="w-full h-full object-cover transition-transform duration-700">
+                     <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-neonPurple/80 to-darkBg/40 opacity-0 transition-opacity duration-300 flex items-end p-4">
+                        <span class="font-display font-bold text-white">CONCEPT RENDER</span>
+                    </div>
+                </div>
+                <div class="gallery-item relative group rounded-lg overflow-hidden border border-white/10 md:col-span-2 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?q=80&w=800&auto=format&fit=crop" alt="Car detail" class="w-full h-full object-cover transition-transform duration-700">
+                     <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-neonBlue/80 to-darkBg/40 opacity-0 transition-opacity duration-300 flex items-end p-4">
+                        <span class="font-display font-bold text-white">NIGHT TRACK TESTING</span>
+                    </div>
+                </div>
+                 <div class="gallery-item relative group rounded-lg overflow-hidden border border-white/10 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?q=80&w=800&auto=format&fit=crop" alt="Car detail" class="w-full h-full object-cover transition-transform duration-700">
+                     <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-neonRed/80 to-darkBg/40 opacity-0 transition-opacity duration-300 flex items-end p-4">
+                        <span class="font-display font-bold text-white">INTERIOR UI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-black/50">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-display font-bold mb-12 text-center text-white">ENGINEERING TRACK</h2>
+            
+            <div class="relative border-l-2 border-neonBlue/30 ml-4 md:ml-0">
+                <div class="mb-12 ml-10 relative">
+                    <div class="absolute -left-[53px] w-6 h-6 bg-black border-4 border-neonBlue rounded-full shadow-neon-blue"></div>
+                    <h3 class="text-2xl font-display font-bold text-white">Senior Design Engineer</h3>
+                    <span class="text-neonBlue font-mono text-sm">2023 - Present</span>
+                    <p class="mt-2 text-gray-400">Leading the suspension geometry team for the new commercial SUV lineup.</p>
+                </div>
+                <div class="mb-12 ml-10 relative">
+                    <div class="absolute -left-[53px] w-6 h-6 bg-black border-4 border-gray-600 rounded-full"></div>
+                    <h3 class="text-2xl font-display font-bold text-white">Automotive Intern</h3>
+                    <span class="text-gray-500 font-mono text-sm">2021 - 2022</span>
+                    <p class="mt-2 text-gray-400">Assisted in wind tunnel testing and data acquisition for drag reduction prototypes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="py-20 relative overflow-hidden">
+        <div class="absolute bottom-0 inset-x-0 h-32 bg-neonRed/10 blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-3xl mx-auto px-6 relative z-10 text-center">
+            <h2 class="text-5xl font-display font-bold mb-6 text-white">START THE ENGINE</h2>
+            <p class="text-gray-400 mb-10 text-lg">Ready to engineer the next generation of automotive technology?</p>
+            
+            <form class="space-y-6 text-left">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="relative group">
+                        <div class="absolute -inset-0.5 bg-neonBlue/30 rounded-sm blur opacity-0 group-hover:opacity-100 transition"></div>
+                        <input type="text" placeholder="NAME" class="relative w-full bg-black/50 border border-white/10 p-4 text-white focus:outline-none focus:border-neonBlue transition duration-300 placeholder-gray-500 font-display tracking-wider">
+                    </div>
+                     <div class="relative group">
+                        <div class="absolute -inset-0.5 bg-neonBlue/30 rounded-sm blur opacity-0 group-hover:opacity-100 transition"></div>
+                        <input type="email" placeholder="EMAIL" class="relative w-full bg-black/50 border border-white/10 p-4 text-white focus:outline-none focus:border-neonBlue transition duration-300 placeholder-gray-500 font-display tracking-wider">
+                    </div>
+                </div>
+                <div class="relative group">
+                    <div class="absolute -inset-0.5 bg-neonBlue/30 rounded-sm blur opacity-0 group-hover:opacity-100 transition"></div>
+                    <textarea rows="4" placeholder="TRANSMISSION MESSAGE..." class="relative w-full bg-black/50 border border-white/10 p-4 text-white focus:outline-none focus:border-neonBlue transition duration-300 placeholder-gray-500 font-display tracking-wider"></textarea>
+                </div>
+                <button type="button" class="w-full bg-neonRed text-black font-display font-bold py-4 text-xl hover:bg-white transition duration-300 shadow-neon-red clip-path-slant">
+                    SEND TRANSMISSION
+                </button>
+                <!-- <button type="button" class="w-full bg-neonRed text-black font-display font-bold py-4 text-xl hover:bg-white transition duration-300 shadow-neon-red">
+                    INITIATE CONTACT
+                </button> -->
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-8 border-t border-white/10 text-center bg-black">
+        <div class="flex justify-center items-center mb-4">
+             <span class="text-xl font-display font-bold text-white tracking-wider">
+                BELHIN<span class="text-neonBlue">.JG</span>
+            </span>
+        </div>
+        <p class="text-gray-600 font-mono text-xs">© 2024 AUTOMOTIVE ENGINEERING PORTFOLIO. ALL SYSTEMS NOMINAL.</p>
+    </footer>
+
+</body>
+</html>
